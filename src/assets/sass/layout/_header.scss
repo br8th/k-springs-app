@@ -1,0 +1,375 @@
+//$color-2: #E4852E; // PLUM
+//$color-3: #FEFEFE; // WHITE
+//$color-4: #E8E0D5; // ANTI-FLASH WHITE
+
+//$lightning-yellow: #F0A128;
+//$moon-yellow: #EFC626;
+//$west-side: #E4852E;
+//$buttercup: #D99A2B;
+//$vista-white: #E8E0D5;
+//$blackish: #796B63;
+//$c: #E2DDD6;
+
+//$color-1: $yellow-darkest; // YANKEES BLUE
+
+// Header Size
+$header-height-small: 6rem;
+$header-height: 8rem;
+
+$secondary-nav-height-small: 5rem;
+$secondary-nav-height: 6rem;
+
+.auto-hide-header {
+
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $header-height-small;
+  background-color: $white;
+  @include clearfix;
+  transform: translateZ(0);
+  will-change: transform;
+  transition: transform .5s;
+
+  &.is-hidden {
+    transform: translateY(-100%);
+  }
+
+  &__logo, &__nav-trigger {
+    position: absolute;
+    @include center(y);
+  }
+
+  &__logo {
+    left: 5%;
+
+    a, img {
+      display: block;
+      max-width: 40px;
+    }
+  }
+
+  &__nav-trigger {
+    /* vertically align its content */
+    display: table;
+    height: 100%;
+    padding: 0 1em;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: $black;
+    font-weight: bold;
+    right: 0;
+    border-left: 1px solid shade($white, 5%);
+
+    span {
+      /* vertically align inside parent element */
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    em, em::after, em::before {
+      /* this is the menu icon */
+      display: block;
+      position: relative;
+      height: 2px;
+      width: 22px;
+      background-color: $black;
+      backface-visibility: hidden;
+    }
+
+    em {
+      /* this is the menu central line */
+      margin: 6px auto 14px;
+      transition: background-color .2s;
+    }
+
+    em::before, em::after {
+      position: absolute;
+      content: '';
+      left: 0;
+      transition: transform .2s;
+    }
+
+    em::before {
+      /* this is the menu icon top line */
+      transform: translateY(-6px);
+    }
+
+    em::after {
+      /* this is the menu icon bottom line */
+      transform: translateY(6px);
+    }
+
+    @include respond(tab-port) {
+      display: none;
+    }
+  }
+
+  &.nav-open {
+    .auto-hide-header__nav-trigger {
+      em {
+        /* transform menu icon into a 'X' icon */
+        background-color: rgba($white, 0);
+      }
+
+      em::before {
+        /* rotate top line */
+        transform: rotate(-45deg);
+      }
+
+      em::after {
+        /* rotate bottom line */
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  .primary-nav {
+    //font-family: "Righteous", sans-serif;
+    display: inline-block;
+    float: right;
+    height: 100%;
+    padding-right: 5%;
+
+    > ul {
+      position: absolute;
+      z-index: 2;
+      top: $header-height-small;
+      left: 0;
+      width: 100%;
+      background-color: $white;
+      display: none;
+      box-shadow: 0 12px 20px rgba($blackish, .2);
+
+      a {
+        display: block;
+        height: 5rem;
+        line-height: 5rem;
+        padding-left: 5%;
+        color: rgba($dark-blackish, .8);
+        font-size: 1.5rem;
+        font-weight: 600;
+        border-top: 1px solid shade($white, 5%);
+
+        &:hover, &.active {
+          color: $yellow;
+        }
+      }
+    }
+
+    @include respond(tab-port) {
+      /* vertically align its content */
+      display: table;
+
+      > ul {
+        /* vertically align inside parent element */
+        display: table-cell;
+        vertical-align: middle;
+        /* reset mobile style */
+        position: relative;
+        width: auto;
+        top: 0;
+        padding: 0;
+        @include clearfix;
+        background-color: transparent;
+        box-shadow: none;
+
+        li {
+          display: inline-block;
+          float: left;
+          margin-right: 1.5em;
+
+          &:last-of-type {
+            margin-right: 0;
+          }
+        }
+
+        a {
+          /* reset mobile style */
+          height: auto;
+          line-height: normal;
+          padding: 0;
+          border: none;
+        }
+      }
+    }
+  }
+
+}
+
+.nav-open .primary-nav ul,
+.primary-nav ul:target {
+  /*
+      show primary nav - mobile only
+      :target is used to show navigation on no-js devices
+  */
+  display: block;
+
+  @include respond(tab-port) {
+    display: table-cell;
+  }
+}
+
+.secondary-nav {
+  position: relative;
+  z-index: 1;
+  clear: both;
+  width: 100%;
+  height: $secondary-nav-height-small;
+  border-bottom: 1px solid $vista-white;
+  font-weight: 600;
+  background-color: $white;
+  text-transform: uppercase;
+  /* Force Hardware Acceleration */
+  transform: translateZ(0);
+  will-change: transform;
+  transition: transform .5s;
+
+  /* gradient on the right - to indicate it's possible to scroll */
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 35px;
+    background: transparent;
+    background: linear-gradient(to left, rgba($vista-white, .4), rgba($vista-white, 0));
+    pointer-events: none;
+    transition: opacity .2s;
+  }
+
+  @include respond(phone) {
+    &::after {
+      display: none;
+    }
+  }
+
+  &.nav-end::after {
+    opacity: 0;
+  }
+
+  ul, li, a {
+    height: 100%;
+  }
+
+  ul {
+    /* enables a flex context for all its direct children */
+    display: flex;
+    padding: 0 5%;
+    @include clearfix;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  li {
+    display: inline-block;
+    float: left;
+    /* do not shrink - elements float on the right of the element */
+    flex-shrink: 0;
+
+    &:last-of-type {
+      padding-right: 20px;
+    }
+  }
+
+  a {
+    display: block;
+    color: $blackish;
+    opacity: .7;
+    line-height: $secondary-nav-height-small;
+    padding: 0 1em;
+
+    &:hover, &.active {
+      opacity: 1;
+      color: $west-side;
+
+      @include respond(tab-port) {
+        color: $blackish;
+      }
+    }
+  }
+
+  @include respond(tab-port) {
+    height: $secondary-nav-height;
+    overflow: visible;
+
+    ul {
+      /* reset mobile style */
+      display: block;
+      text-align: center;
+    }
+
+    li {
+      /* reset mobile style */
+      float: none;
+      flex-shrink: 1;
+    }
+
+    a {
+      line-height: $secondary-nav-height;
+
+      &.active {
+        box-shadow: inset 0 -3px $yellow;
+      }
+    }
+  }
+}
+
+.main-content {
+  padding-top: $header-height-small;
+  overflow: hidden;
+  background-color: rgba($vista-white, .1);
+
+  &.sub-nav {
+    padding-top: $header-height-small + $secondary-nav-height-small;
+  }
+
+  @include respond(big-desktop) {
+    padding-top: $header-height;
+
+    &.sub-nav {
+      padding-top: $header-height + $secondary-nav-height;
+    }
+  }
+}
+
+.main-content.sub-nav :target::before {
+  display: block;
+  content: "";
+  margin-top: -$secondary-nav-height-small;
+  height: $secondary-nav-height-small;
+  visibility: hidden;
+
+  @include respond(big-desktop) {
+    margin-top: -$secondary-nav-height;
+    height: $secondary-nav-height;
+  }
+}
+
+.icon-box {
+
+  &__icon {
+    height: 2.25rem;
+    width: 2.25rem;
+  }
+
+  &__notification {
+    font-size: .8rem;
+    height: 1.75rem;
+    width: 1.75rem;
+    background: $west-side;
+    color: white;
+    border-radius: 100%;
+    padding: .6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+  }
+}

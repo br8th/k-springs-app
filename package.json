@@ -1,0 +1,37 @@
+{
+  "name": "KSprings",
+  "author": "Vincent Kyalo <kyalovincent@yahoo.com>",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.4",
+    "@fortawesome/free-brands-svg-icons": "^5.3.1",
+    "@fortawesome/free-solid-svg-icons": "^5.3.1",
+    "@fortawesome/vue-fontawesome": "^0.1.1",
+    "axios": "^0.18.0",
+    "flickity": "^2.1.2",
+    "vue": "^2.5.16",
+    "vue-carousel": "^0.14.0",
+    "vue-notifyjs": "^0.4.3",
+    "vue-router": "^3.0.1",
+    "vue-scroll": "^2.1.7",
+    "vue-scrollto": "^2.13.0",
+    "vue2-google-maps": "^0.10.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0-rc.5",
+    "@vue/cli-plugin-eslint": "^3.0.0-rc.5",
+    "@vue/cli-service": "^3.0.0-rc.5",
+    "@vue/eslint-config-airbnb": "^3.0.0-rc.5",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "tailwindcss": "^0.6.4",
+    "vue-template-compiler": "^2.5.16"
+  }
+}

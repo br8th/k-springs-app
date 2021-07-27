@@ -1,0 +1,31 @@
+/**
+* Thanks to Ryan McLaughlin.
+* https://codepen.io/ryanmclaughlin
+*/
+.whiskey-loader {
+  position: relative;
+
+  &:before,
+  &:after {
+    animation: cube-float 2s linear infinite;
+    background-color: $vista-white;
+    border: 2px solid $blackish;
+    border-radius: 2px;
+    content: '';
+    height: 17px;
+    width: 17px;
+    position: absolute;
+    top: 28px;
+    left: 35px;
+    will-change: transform;
+    z-index: -1;
+  }
+
+  &:after {
+    animation-name: cube-float--alt;
+    animation-duration: 3s;
+    top: 34px;
+    left: 16px;
+    transform: rotate(30deg);
+  }
+}

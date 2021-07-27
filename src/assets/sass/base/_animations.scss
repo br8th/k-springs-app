@@ -1,0 +1,92 @@
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/** For the whiskey loader **/
+@keyframes cube-float {
+  0% {
+    animation-timing-function: ease-in;
+    transform: none;
+  }
+
+  25% {
+    transform: rotate(-5deg) translate3d(-1px, 2px, 0);
+  }
+
+  50% {
+    animation-timing-function: ease-in-out;
+    transform: rotate(0deg) translate3d(-1px, 6px, 0);
+  }
+
+  80% {
+    transform: rotate(5deg) translate3d(0, 2px, 0);
+  }
+
+  100% {
+    animation-timing-function: ease-in;
+    transform: none;
+  }
+}
+
+@keyframes cube-float--alt {
+  50% {
+    animation-timing-function: ease;
+    transform: rotate(20deg) translate3d(-2px, -4px, 0);
+  }
+}
+
+@keyframes pop {
+  50% {
+    transform: scale(1.2);
+  }
+}

@@ -1,0 +1,27 @@
+.form-group {
+  margin: 0 0 3rem 0;
+
+  /** Style input type textish, no support for lt IE 9 **/
+  input:not([type=submit]):not([type=file]) {
+    height: 4rem;
+    width: 100%;
+    background: inherit;
+    border: 0;
+    border-bottom: 1px solid $vista-white;
+    outline: none;
+    transition-duration: .5s;
+
+    &:focus {
+      border-bottom: 1px solid $west-side;
+    }
+
+  }
+
+  .invalid-feedback {
+    display: inline-block;
+    font-size: smaller;
+    color: red;
+    width: 100%;
+    text-align: left;
+  }
+}
